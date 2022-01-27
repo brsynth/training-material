@@ -454,9 +454,7 @@ module GTNNotebooks
         #
         # But we'll only do this if it's in "deploy" mode, in order to have
         # the images also work locally.
-        if site.config['url'] == "https://training.galaxyproject.org"
-          cell['source'].gsub!(/<img src=\"\.\./, '<img src="' + site.config['url'] + site.config['baseurl'] + page_url.split('/')[0..-2].join('/') + '/..')
-        end
+        cell['source'].gsub!(/<img src=\"\.\./, '<img src="' + "https://training.galaxyproject.org" + site.config['baseurl'] + page_url.split('/')[0..-2].join('/') + '/..')
 
         # Strip out the highlighting as it is bad on some platforms.
         cell['source'].gsub!(/<pre class="highlight">/, '<pre style="color: inherit; background: white">')
